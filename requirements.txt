@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+ultralytics
+firebase-admin
+google-cloud-firestore
+Pillow
+python-multipart

@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>SmartCity – Intelligent Urban Management</title>
+
+<meta name="description"
+      content="SmartCity uses AI-powered analytics, real-time citizen reporting, and intelligent dashboards to build safer, cleaner, and smarter cities.">
+
+<!-- Favicon -->
+<link rel="icon" href="favicon.ico">
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="styles.css">
+
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    brand: {
+                        50: '#ecfdfb',
+                        100: '#ccfbf1',
+                        500: '#0f766e',
+                        600: '#115e59',
+                        700: '#0f4c46'
+                    },
+                    accent: {
+                        500: '#f97316',
+                        600: '#ea580c'
+                    }
+                },
+
+                fontFamily: {
+                    display: ['"Space Grotesk"', 'sans-serif'],
+                    sans: ['"IBM Plex Sans"', 'sans-serif']
+                }
+            }
+        }
+    };
+</script>
+
+<!-- Custom Animations -->
+<style>
+    @keyframes float-slow {
+        0%, 100% {
+            transform: translateY(0) rotate(0deg);
+        }
+
+        50% {
+            transform: translateY(-20px) rotate(2deg);
+        }
+    }
+
+    @keyframes float-medium {
+        0%, 100% {
+            transform: translateY(0) rotate(0deg);
+        }
+
+        50% {
+            transform: translateY(-14px) rotate(-1.5deg);
+        }
+    }
+
+    @keyframes pulse-glow {
+        0%, 100% {
+            opacity: 0.6;
+        }
+
+        50% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes slide-up {
+        from {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    .float-slow {
+        animation: float-slow 8s ease-in-out infinite;
+    }
+
+    .float-medium {
+        animation: float-medium 6s ease-in-out infinite;
+    }
+
+    .pulse-glow {
+        animation: pulse-glow 3s ease-in-out infinite;
+    }
+
+    .slide-up {
+        animation: slide-up 0.8s ease-out both;
+    }
+
+    .slide-up-delay-1 {
+        animation: slide-up 0.8s 0.15s ease-out both;
+    }
+
+    .slide-up-delay-2 {
+        animation: slide-up 0.8s 0.3s ease-out both;
+    }
+
+    .slide-up-delay-3 {
+        animation: slide-up 0.8s 0.45s ease-out both;
+    }
+
+    .fade-in {
+        animation: fade-in 1s ease-out both;
+    }
+
+    .feature-card {
+        transition:
+            transform 0.35s cubic-bezier(.4,0,.2,1),
+            box-shadow 0.35s cubic-bezier(.4,0,.2,1);
+    }
+
+    .feature-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 28px 60px rgba(15,23,42,0.14);
+    }
+</style>
+```
+
+</head>
+
+<body class="text-slate-900 font-sans antialiased">
+
+```
+<div class="min-h-screen bg-aurora relative overflow-hidden">
+
+    <div class="absolute inset-0 bg-grid opacity-30 pointer-events-none"></div>
+
+    <!-- Decorative Blobs -->
+    <div class="absolute -top-32 -right-32 w-96 h-96 bg-gradient-to-br from-teal-400/30 to-emerald-300/20 rounded-full blur-3xl float-slow pointer-events-none"></div>
+
+    <div class="absolute top-1/2 -left-40 w-80 h-80 bg-gradient-to-tr from-orange-300/20 to-amber-200/20 rounded-full blur-3xl float-medium pointer-events-none"></div>
+
+    <div class="absolute bottom-20 right-10 w-64 h-64 bg-gradient-to-bl from-sky-300/20 to-cyan-200/15 rounded-full blur-3xl float-slow pointer-events-none"></div>
+
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="glass mt-4 rounded-2xl px-4 sm:px-6 py-3 flex items-center justify-between">
+
+                <a href="index.html" class="flex items-center gap-2 focus-ring">
+
+                    <div class="bg-gradient-to-br from-teal-600 to-emerald-600 p-2 rounded-lg text-white shadow-lg shadow-teal-500/30">
+
+                        <svg class="h-5 w-5"
+                             fill="none"
+                             viewBox="0 0 24 24"
+                             stroke="currentColor">
+
+                            <path stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
+
+                    </div>
+
+                    <span class="font-display font-bold text-lg text-slate-800">
+                        SmartCity
+                    </span>
+
+                </a>
+
+
+                <div class="hidden md:flex space-x-6 text-sm font-medium items-center">
+
+                    <a href="citizen.html"
+                       class="text-slate-500 hover:text-teal-600 transition focus-ring">
+                        Citizen Panel
+                    </a>
+
+                    <a href="admin.html"
+                       class="text-slate-500 hover:text-teal-600 transition focus-ring">
+                        Admin
+                    </a>
+
+                    <a href="insights.html"
+                       class="text-slate-500 hover:text-teal-600 transition focus-ring">
+                        Insights
+                    </a>
+
+                    <a href="citizen.html"
+                       class="ml-2 bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2 px-5 rounded-xl text-sm shadow-md shadow-teal-500/20 transition">
+                        Report Issue
+                    </a>
+
+                </div>
+
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuButton"
+                        class="md:hidden text-slate-700 hover:text-teal-600 focus-ring"
+                        aria-label="Toggle menu">
+
+                    <svg class="h-7 w-7"
+                         fill="none"
+                         viewBox="0 0 24 24"
+                         stroke="currentColor">
+
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M4 6h16M4 12h16M4 18h16" />
+
+                    </svg>
+
+                </button>
+
+            </div>
+
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu"
+                 class="md:hidden hidden mt-3 glass rounded-2xl px-4 py-4">
+
+                <div class="flex flex-col space-y-3 text-sm font-medium">
+
+                    <a href="citizen.html"
+                       class="text-slate-600 hover:text-teal-600 transition focus-ring">
+                        Citizen Panel
+                    </a>
+
+                    <a href="admin.html"
+                       class="text-slate-600 hover:text-teal-600 transition focus-ring">
+                        Admin Dashboard
+                    </a>
+
+                    <a href="insights.html"
+                       class="text-slate-600 hover:text-teal-600 transition focus-ring">
+                        AI Insights
+                    </a>
+
+                    <a href="citizen.html"
+                       class="bg-teal-600 text-white text-center py-2 rounded-xl font-semibold">
+                        Report Issue
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+    </nav>
+
+
+    <!-- Hero Section -->
+    <section class="relative z-10 pt-36 sm:pt-44 pb-20 px-4">
+
+        <div class="max-w-5xl mx-auto text-center">
+
+            <div class="slide-up inline-flex items-center gap-2 bg-white/80 border border-white/60 rounded-full px-4 py-1.5 text-xs font-semibold text-teal-700 uppercase tracking-widest mb-8 shadow-sm">
+
+                <span class="w-2 h-2 rounded-full bg-emerald-500 pulse-glow"></span>
+
+                AI-Powered Urban Intelligence
+
+            </div>
+
+
+            <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight slide-up-delay-1">
+
+                Building Smarter Cities,
+
+                <br class="hidden sm:block">
+
+                <span class="bg-gradient-to-r from-teal-600 via-emerald-600 to-sky-600 bg-clip-text text-transparent">
+                    One Report at a Time
+                </span>
+
+            </h1>
+
+
+            <p class="mt-6 text-slate-600 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed slide-up-delay-2">
+
+                Empowering citizens and city officials with real-time issue tracking,
+                AI-powered detection, and data-driven insights for safer,
+                cleaner urban environments.
+
+            </p>
+
+
+            <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4 slide-up-delay-3">
+
+                <a href="citizen.html"
+                   class="inline-flex items-center justify-center bg-teal-600 hover:bg-teal-700 text-white font-semibold py-4 px-8 rounded-2xl text-base shadow-lg shadow-teal-600/25 transition transform hover:scale-[1.02] active:scale-95">
+
+                    Report an Issue
+
+                </a>
+
+
+                <a href="admin.html"
+                   class="inline-flex items-center justify-center bg-white/90 hover:bg-white text-slate-700 font-semibold py-4 px-8 rounded-2xl text-base border border-slate-200 shadow-sm transition transform hover:scale-[1.02] active:scale-95">
+
+                    Open Dashboard
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Stats -->
+    <section class="relative z-10 px-4 pb-16">
+
+        <div class="max-w-5xl mx-auto">
+
+            <div class="glass rounded-3xl p-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+
+                <div>
+                    <div class="font-display text-3xl sm:text-4xl font-bold text-teal-700">
+                        10k+
+                    </div>
+                    <p class="text-sm text-slate-500 mt-1 font-medium">
+                        Data Points / Hour
+                    </p>
+                </div>
+
+                <div>
+                    <div class="font-display text-3xl sm:text-4xl font-bold text-emerald-700">
+                        94.2%
+                    </div>
+                    <p class="text-sm text-slate-500 mt-1 font-medium">
+                        AI Model Accuracy
+                    </p>
+                </div>
+
+                <div>
+                    <div class="font-display text-3xl sm:text-4xl font-bold text-sky-700">
+                        18h
+                    </div>
+                    <p class="text-sm text-slate-500 mt-1 font-medium">
+                        Avg Response Time
+                    </p>
+                </div>
+
+                <div>
+                    <div class="font-display text-3xl sm:text-4xl font-bold text-amber-700">
+                        24/7
+                    </div>
+                    <p class="text-sm text-slate-500 mt-1 font-medium">
+                        Real-Time Monitoring
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Features -->
+    <section class="relative z-10 px-4 pb-20">
+
+        <div class="max-w-6xl mx-auto">
+
+            <div class="text-center mb-14">
+
+                <span class="text-xs uppercase tracking-widest text-teal-600 font-semibold">
+                    Platform
+                </span>
+
+                <h2 class="font-display text-3xl sm:text-4xl font-bold text-slate-900 mt-3">
+                    Three Pillars of a Smarter City
+                </h2>
+
+                <p class="text-slate-500 mt-3 max-w-xl mx-auto">
+                    From citizen-powered reporting to AI-driven analytics —
+                    every layer works together seamlessly.
+                </p>
+
+            </div>
+
+
+            <div class="grid md:grid-cols-3 gap-8">
+
+                <!-- Citizen Panel -->
+                <a href="citizen.html"
+                   class="feature-card bg-white/90 rounded-3xl shadow-lg border border-white/70 p-8 block group">
+
+                    <h3 class="font-display text-xl font-semibold text-slate-900 mb-2">
+                        Citizen Reporting
+                    </h3>
+
+                    <p class="text-slate-500 text-sm leading-relaxed mb-5">
+                        Report potholes, garbage, traffic issues, and more
+                        with photo uploads and precise map pinning.
+                        Every report triggers a tracked response.
+                    </p>
+
+                    <div class="flex items-center text-teal-600 text-sm font-semibold group-hover:gap-3 gap-2 transition-all">
+                        Submit a Report
+                    </div>
+
+                </a>
+
+
+                <!-- Admin Dashboard -->
+                <a href="admin.html"
+                   class="feature-card bg-white/90 rounded-3xl shadow-lg border border-white/70 p-8 block group">
+
+                    <h3 class="font-display text-xl font-semibold text-slate-900 mb-2">
+                        Operations Dashboard
+                    </h3>
+
+                    <p class="text-slate-500 text-sm leading-relaxed mb-5">
+                        Real-time incident maps, priority queues, team status,
+                        and crew management — all in one powerful command center.
+                    </p>
+
+                    <div class="flex items-center text-sky-600 text-sm font-semibold group-hover:gap-3 gap-2 transition-all">
+                        Open Dashboard
+                    </div>
+
+                </a>
+
+
+                <!-- AI Insights -->
+                <a href="insights.html"
+                   class="feature-card bg-white/90 rounded-3xl shadow-lg border border-white/70 p-8 block group">
+
+                    <h3 class="font-display text-xl font-semibold text-slate-900 mb-2">
+                        AI-Powered Insights
+                    </h3>
+
+                    <p class="text-slate-500 text-sm leading-relaxed mb-5">
+                        Machine learning models process sensor data to forecast
+                        traffic, monitor air quality, detect patterns,
+                        and optimize resource allocation.
+                    </p>
+
+                    <div class="flex items-center text-amber-600 text-sm font-semibold group-hover:gap-3 gap-2 transition-all">
+                        View Analytics
+                    </div>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- How It Works -->
+    <section class="relative z-10 px-4 pb-20">
+
+        <div class="max-w-5xl mx-auto">
+
+            <div class="text-center mb-14">
+
+                <span class="text-xs uppercase tracking-widest text-teal-600 font-semibold">
+                    Workflow
+                </span>
+
+                <h2 class="font-display text-3xl sm:text-4xl font-bold text-slate-900 mt-3">
+                    How SmartCity Works
+                </h2>
+
+            </div>
+
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <div class="bg-white/80 rounded-2xl border border-white/60 p-6 text-center shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-teal-100 text-teal-700 flex items-center justify-center font-display font-bold text-lg">
+                        1
+                    </div>
+                    <h4 class="font-display font-semibold text-slate-800 mb-1">
+                        Report
+                    </h4>
+                    <p class="text-xs text-slate-500">
+                        Citizens submit issues with photos and location pins.
+                    </p>
+                </div>
+
+
+                <div class="bg-white/80 rounded-2xl border border-white/60 p-6 text-center shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center font-display font-bold text-lg">
+                        2
+                    </div>
+                    <h4 class="font-display font-semibold text-slate-800 mb-1">
+                        Detect
+                    </h4>
+                    <p class="text-xs text-slate-500">
+                        YOLO AI analyzes images and assigns priority levels.
+                    </p>
+                </div>
+
+
+                <div class="bg-white/80 rounded-2xl border border-white/60 p-6 text-center shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center font-display font-bold text-lg">
+                        3
+                    </div>
+                    <h4 class="font-display font-semibold text-slate-800 mb-1">
+                        Route
+                    </h4>
+                    <p class="text-xs text-slate-500">
+                        Issues are routed to the right team with smart prioritization.
+                    </p>
+                </div>
+
+
+                <div class="bg-white/80 rounded-2xl border border-white/60 p-6 text-center shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-display font-bold text-lg">
+                        4
+                    </div>
+                    <h4 class="font-display font-semibold text-slate-800 mb-1">
+                        Resolve
+                    </h4>
+                    <p class="text-xs text-slate-500">
+                        Teams act, and citizens get closure notifications.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Technology -->
+    <section class="relative z-10 px-4 pb-20">
+
+        <div class="max-w-5xl mx-auto">
+
+            <div class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl p-10 sm:p-14 shadow-2xl border border-slate-700 overflow-hidden relative">
+
+                <div class="relative z-10 flex flex-col lg:flex-row items-center gap-10">
+
+                    <div class="flex-1">
+
+                        <span class="text-xs uppercase tracking-widest text-teal-400 font-semibold">
+                            Technology Stack
+                        </span>
+
+                        <h3 class="font-display text-2xl sm:text-3xl font-bold text-white mt-3 mb-4">
+                            Powered by Modern AI &amp; Cloud Infrastructure
+                        </h3>
+
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            YOLO object detection for real-time image analysis.
+                            Firebase for scalable real-time backend.
+                            FastAPI for high-performance AI endpoints.
+                            Leaflet &amp; Chart.js for interactive mapping and visualization.
+                        </p>
+
+                    </div>
+
+
+                    <div class="flex flex-wrap justify-center gap-3">
+
+                        <span class="px-4 py-2 bg-white/10 border border-white/10 rounded-xl text-sm text-white font-medium">
+                            🔥 Firebase
+                        </span>
+
+                        <span class="px-4 py-2 bg-white/10 border border-white/10 rounded-xl text-sm text-white font-medium">
+                            🧠 YOLO v8
+                        </span>
+
+                        <span class="px-4 py-2 bg-white/10 border border-white/10 rounded-xl text-sm text-white font-medium">
+                            ⚡ FastAPI
+                        </span>
+
+                        <span class="px-4 py-2 bg-white/10 border border-white/10 rounded-xl text-sm text-white font-medium">
+                            🗺️ Leaflet
+                        </span>
+
+                        <span class="px-4 py-2 bg-white/10 border border-white/10 rounded-xl text-sm text-white font-medium">
+                            📊 Chart.js
+                        </span>
+
+                        <span class="px-4 py-2 bg-white/10 border border-white/10 rounded-xl text-sm text-white font-medium">
+                            🎨 Tailwind
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="relative z-10 border-t border-slate-200/50 bg-white/40 backdrop-blur-sm">
+
+        <div class="max-w-6xl mx-auto px-4 py-10">
+
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+
+                <div class="flex items-center gap-2">
+
+                    <span class="font-display font-bold text-slate-700">
+                        SmartCity
+                    </span>
+
+                </div>
+
+
+                <div class="flex gap-6 text-sm text-slate-500">
+
+                    <a href="citizen.html" class="hover:text-teal-600 transition">
+                        Citizen Panel
+                    </a>
+
+                    <a href="admin.html" class="hover:text-teal-600 transition">
+                        Admin
+                    </a>
+
+                    <a href="insights.html" class="hover:text-teal-600 transition">
+                        Insights
+                    </a>
+
+                </div>
+
+
+                <p class="text-xs text-slate-400">
+                    &copy; 2026 SmartCity. AI-Powered Urban Management.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+</div>
+
+
+<!-- Smart City AI Chatbot -->
+<div id="smartcity-chat-container"
+     class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+
+    <div id="chat-window"
+         class="hidden w-80 sm:w-96 bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col mb-4 transform transition-all duration-300 origin-bottom-right scale-95 opacity-0">
+
+        <div class="bg-gradient-to-r from-teal-600 to-emerald-600 p-4 flex justify-between items-center text-white">
+
+            <span class="font-display font-semibold">
+                City Assistant AI
+            </span>
+
+            <button id="close-chat"
+                    class="text-white/80 hover:text-white transition focus-ring"
+                    aria-label="Close chat">
+
+                ✕
+
+            </button>
+
+        </div>
+
+
+        <div id="chat-messages"
+             class="h-80 overflow-y-auto p-4 flex flex-col gap-3 bg-slate-50">
+
+            <div class="self-start bg-slate-200 text-slate-800 rounded-2xl rounded-tl-sm px-4 py-2 text-sm max-w-[85%] shadow-sm">
+
+                Hello! I'm the Smart City AI assistant.
+                You can ask me how to report issues,
+                check insights, or any real-life use cases of this platform!
+
+            </div>
+
+        </div>
+
+
+        <div class="p-3 bg-white border-t border-slate-100 flex items-center gap-2">
+
+            <input type="text"
+                   id="chat-input"
+                   placeholder="Type a message..."
+                   class="flex-1 bg-slate-100 border-none rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 transition">
+
+            <button id="send-chat"
+                    class="bg-teal-600 text-white p-2 rounded-xl hover:bg-teal-700 transition focus-ring flex-shrink-0"
+                    aria-label="Send message">
+
+                ➤
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- Chat Toggle -->
+    <button id="chat-toggle"
+            class="bg-teal-600 hover:bg-teal-700 text-white w-14 h-14 rounded-full shadow-xl shadow-teal-600/30 flex items-center justify-center transition-transform hover:scale-105 active:scale-95 focus-ring"
+            aria-label="Open chat">
+
+        💬
+
+    </button>
+
+</div>
+
+
+<!-- Chat JavaScript -->
+<script type="module" src="chat.js"></script>
+
+
+<!-- Mobile Menu JavaScript -->
+<script>
+    const mobileMenuButton =
+        document.getElementById('mobileMenuButton');
+
+    const mobileMenu =
+        document.getElementById('mobileMenu');
+
+    if (mobileMenuButton && mobileMenu) {
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+    }
+</script>
+```
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 2
+names: ['Garbage', 'Pathole']
+
+roboflow:
+  workspace: sakshis-workspace-mrwdo
+  project: potholes_garbage-lskdh
+  version: 2
+  license: MIT
+  url: https://universe.roboflow.com/sakshis-workspace-mrwdo/potholes_garbage-lskdh/dataset/2

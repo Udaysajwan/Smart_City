@@ -1,0 +1,34 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "reports",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "Field1",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Field2",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "reports",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "Field1",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Field2",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}
+
